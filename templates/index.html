@@ -7,13 +7,15 @@
 
 {% block main %}
 
+    {#  <li><a href="http://172.25.56.86:5555/question/"><i class="	" aria-hidden="true"></i> +++++编写性能问题++++++++</a></li>#}
+
     <ul  class="question-list-group">
 
           {% for question in questions %}
 
         <li>
             <div class="avatar-group">
-                <img src="{{ url_for('static',filename='images/MobTech.png') }}" alt="" class="avatar">
+              {# <img src="{{ url_for('static',filename='images/MobTech.png') }}" alt="" class="avatar"> #}
 
             <div class="question-group">
                 <p class="question-title"><a href="#">{{ question.title }}</a></p>
@@ -29,7 +31,7 @@
         </li>
         {% endfor %}
 
-        {{ pagination.links }}
+        {#  {{ pagination.links }} #}
 
     </ul>
 

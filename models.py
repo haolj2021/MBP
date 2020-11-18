@@ -21,7 +21,7 @@ class Question(db.Model):
     author_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     author = db.relationship('User',backref = db.backref('question'))
 
-#日报库
+#RB库
 class report(db.Model):
     __tablename = 'report'
     id = db.Column(db.Integer,primary_key=True,autoincrement=True)

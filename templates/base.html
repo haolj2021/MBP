@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}-MOB性能测试管理平台</title>
+    <title>{% block title %}{% endblock %}MOB性能测试管理平台</title>
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
     <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/base.css')}}">
     {% block  head %}{% endblock %}
 </head>
@@ -22,27 +24,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"> <img class="logo" src="{{ url_for('static',filename='images/MobTech.png') }}" alt=""></a>
+      <a class="navbar-default" href="#"> <img class="logo" src="{{ url_for('static',filename='images/MobTech.png') }}" alt=""></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"> <a href="/"> <i class="fa fa-home"></i> 首页</a></li>
         <li><a href="{{ url_for('question') }}"><i class="fa fa-question-circle-o" aria-hidden="true"></i> 性能问题统计</a></li>
-        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> 测试报告管理</a></li>
-        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> 工作报告管理</a></li>
-        <li><a href="http://ngrinder.test.mob.com/"><i class="fa fa-line-chart" aria-hidden="true"></i> 压测及监控管理</a></li>
-        <li><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i> 定时任务</a></li>
-        <li><a href="https://testerhome.com/opensource_projects/82"><i class="	fa fa-ambulance" aria-hidden="true"></i> web安全扫描</a></li>
+        <li><a href="{{ url_for('perfxuqiu') }}"><i class="fa fa-envelope" aria-hidden="true"></i> 压测需求</a></li>
+        <li><a href="http://ngrinder.test.mob.com/"><i class="fa fa-line-chart" aria-hidden="true"></i> 压测平台</a></li>
+        <li><a href="perfshow"><i class="fa fa-bar-chart" aria-hidden="true"></i> 性能看板</a></li>
+        <li><a href="{{ url_for('autocheck') }}"><i class="fa fa-tasks" aria-hidden="true"></i> 智能检测</a></li>
+        <li><a href="http://10.18.97.60:9292/d/users/sign_in"><i class="	" aria-hidden="true"></i> 安全扫描</a></li>
+        <li><a href="http://grafana.ops.mob.com/"><i class="	" aria-hidden="true"></i> 监控</a></li>
+        <li><a href="http://10.18.97.60:7100/auth/mock/"><i class="	" aria-hidden="true"></i> APP性能</a></li>
 
       </ul>
       <form class="navbar-form navbar-left" action="{{ url_for('search') }}" method="get">
         <div class="form-group">
-          <input  name="q" type="text" class="form-control" placeholder="请输入关键字">
+          <input  name="q" type="text" style="width:120px;" class="form-control" placeholder="请输入关键字">
         </div>
-        <button type="submit" class="btn btn-default">查找</button>
+        <button type="submit" class="btn btn-primary">查找</button>
       </form>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-center ">
           {% if user %}
               <li><a href="#">{{ user.username }}</a></li>
               <li><a href="{{ url_for('logout') }}">注销</a></li>
